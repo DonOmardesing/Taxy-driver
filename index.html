@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data:; img-src 'self' https://images.unsplash.com https://via.placeholder.com data:; connect-src 'self' https://wa.me; frame-ancestors 'none';">
+  <title>Transporte Ejecutivo Sonsón</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html,body{height:100%;overflow-x:hidden;}
+    body{background:linear-gradient(180deg,#06080d 0%,#090e18 55%,#07090f 100%);min-height:100vh;font-family:'Segoe UI',sans-serif;color:#fff;max-width:430px;margin:0 auto;}
+    input,textarea,select{font-family:inherit;}
+    .header{background:linear-gradient(180deg,#080a10,#0c1120);border-bottom:1px solid rgba(0,212,255,0.13);padding:22px 20px 16px;display:flex;flex-direction:column;align-items:center;}
+    .logo-rule{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+    .logo-rule-line{height:1px;background:linear-gradient(to right,transparent,#00d4ff);}
+    .logo-rule-dot{width:6px;height:6px;border-radius:50%;background:#00d4ff;box-shadow:0 0 10px #00d4ff;}
+    .logo-name{font-family:Georgia,serif;font-size:28px;font-weight:700;letter-spacing:6px;color:#00d4ff;text-shadow:0 0 20px rgba(0,212,255,0.8),0 0 40px rgba(0,212,255,0.4),0 2px 6px rgba(0,0,0,0.95);line-height:1;text-align:center;}
+    .logo-diamond-rule{display:flex;align-items:center;gap:5px;margin:5px 0;}
+    .logo-diamond-line{width:34px;height:1px;background:#00d4ff;opacity:0.55;}
+    .logo-diamond{width:5px;height:5px;background:#00d4ff;transform:rotate(45deg);opacity:0.85;box-shadow:0 0 8px #00d4ff;}
+    .logo-rides{font-family:Georgia,serif;font-size:13px;letter-spacing:11px;color:#80e5ff;opacity:0.85;text-shadow:0 0 10px rgba(128,229,255,0.6);}
+    .logo-bottom-rule{display:flex;align-items:center;gap:8px;margin:7px 0 5px;}
+    .logo-bottom-line{width:68px;height:1px;opacity:0.4;}
+    .logo-tp{font-family:Georgia,serif;font-size:11px;letter-spacing:6px;color:#fff;text-transform:uppercase;text-shadow:0 0 8px rgba(255,255,255,0.9),0 0 18px rgba(255,255,255,0.4);cursor:pointer;user-select:none;-webkit-user-select:none;padding:4px 8px;}
+    .lang-selector{display:flex;gap:10px;margin-top:14px;background:rgba(0,212,255,0.1);padding:5px;border-radius:25px;border:1px solid rgba(0,212,255,0.25);}
+    .lang-btn{background:transparent;border:none;color:#888;padding:8px 18px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;transition:all 0.3s;letter-spacing:0.5px;}
+    .lang-btn.active{background:#00d4ff;color:#000;box-shadow:0 0 15px rgba(0,212,255,0.5);}
+    .lang-btn:hover:not(.active){color:#00d4ff;}
+    .quick-row{display:flex;gap:9px;padding:13px;flex-wrap:wrap;}
+    .quick-btn{flex:1;min-width:140px;background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(0,212,255,0.05));border:1px solid rgba(0,212,255,0.2);padding:13px 11px;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all 0.25s;}
+    .quick-btn:hover{transform:translateY(-2px);border-color:rgba(0,212,255,0.4);box-shadow:0 6px 18px rgba(0,212,255,0.15);}
+    .quick-btn-left{display:flex;align-items:center;gap:9px;}
+    .quick-btn .icon{font-size:19px;}
+    .quick-btn .label{font-size:13px;letter-spacing:1px;color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
+    .quick-chev{font-size:12px;opacity:0.7;transition:transform 0.3s;}
+    .card{background:linear-gradient(135deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.06);border-radius:16px;margin:11px 13px 17px;overflow:hidden;transition:all 0.3s;}
+    .card.active{border-color:rgba(0,212,255,0.25);box-shadow:0 8px 28px rgba(0,0,0,0.35);}
+    .card-header{display:flex;align-items:center;gap:13px;padding:16px 15px;cursor:pointer;background:linear-gradient(135deg,rgba(0,212,255,0.08),transparent);transition:all 0.3s;}
+    .card-header:hover{background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(0,212,255,0.05));}
+    .card-icon{font-size:26px;}
+    .card-title{font-size:16px;font-weight:700;letter-spacing:1px;margin-bottom:3px;color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.6);}
+    .card-sub{font-size:12px;color:#fff;letter-spacing:1px;text-shadow:0 0 5px rgba(255,255,255,0.4);}
+    .card-chev{margin-left:auto;font-size:14px;opacity:0.7;transition:transform 0.3s;}
+    .card-body{max-height:0;overflow:hidden;transition:all 0.4s cubic-bezier(0,1,0,1);padding:0 15px;}
+    .card-body.open{max-height:3000px;padding:0 15px 16px;transition:all 0.5s cubic-bezier(1,0,0,1);}
+    .lbl{display:block;font-size:12px;color:#00d4ff;margin-bottom:6px;letter-spacing:1px;text-shadow:0 0 8px rgba(0,212,255,0.5);}
+    .inp{width:100%;box-sizing:border-box;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:11px 12px;color:#fff;font-size:14px;outline:none;transition:all 0.25s;}
+    .inp:focus{border-color:#00d4ff;box-shadow:0 0 0 3px rgba(0,212,255,0.12);}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:13px;}
+    .btn-gold{width:100%;background:linear-gradient(135deg,#00d4ff,#0099cc);border:none;border-radius:9px;padding:13px;color:#000;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.3s;letter-spacing:1px;margin-top:6px;box-shadow:0 0 15px rgba(0,212,255,0.4);}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,212,255,0.6);}
+    .btn-gold-sm{width:100%;background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.3);border-radius:7px;padding:8px;color:#00d4ff;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.3s;margin-top:8px;}
+    .btn-gold-sm:hover{background:rgba(0,212,255,0.25);}
+    .ok{background:rgba(26,219,122,0.12);border:1px solid rgba(26,219,122,0.35);color:#1adb7a;padding:12px;border-radius:9px;text-align:center;margin-bottom:13px;font-size:13px;}
+    .gal-sub{text-align:center;color:#00d4ff;font-size:13px;margin-bottom:13px;letter-spacing:2px;text-shadow:0 0 10px rgba(0,212,255,0.6);}
+    .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+    .gal-item{aspect-ratio:1;object-fit:cover;border-radius:7px;cursor:pointer;border:2px solid transparent;transition:all 0.25s;}
+    .gal-item:hover{transform:scale(1.05);border-color:#00d4ff;}
+    .reseña-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:11px;padding:12px;margin-bottom:10px;}
+    .reseña-nombre{font-weight:700;color:#00d4ff;margin-bottom:5px;font-size:14px;text-shadow:0 0 8px rgba(0,212,255,0.6);}
+    .reseña-texto{font-size:13px;color:#fff;line-height:1.5;}
+    .valoramos{text-align:center;color:#00d4ff;font-size:13px;margin-bottom:12px;letter-spacing:2px;text-shadow:0 0 10px rgba(0,212,255,0.6);}
+    .img-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:10000;padding:20px;box-sizing:border-box;}
+    .img-overlay img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;}
+    .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:10001;padding:20px;}
+    .modal-box{background:linear-gradient(135deg,#1a1f2e,#0f1420);border:1px solid rgba(0,212,255,0.3);border-radius:16px;padding:26px;max-width:320px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+    .modal-title{font-size:21px;font-weight:700;text-align:center;margin-bottom:5px;letter-spacing:1px;color:#00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
+    .modal-sub{text-align:center;color:#fff;font-size:13px;margin-bottom:17px;}
+    .modal-cancel{width:100%;background:transparent;border:1px solid rgba(255,255,255,0.15);border-radius:9px;padding:11px;color:#fff;margin-top:9px;cursor:pointer;font-size:14px;transition:all 0.25s;}
+    .modal-cancel:hover{background:rgba(255,255,255,0.06);}
+    .admin-wrap{padding:13px;}
+    .admin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;padding:11px;background:rgba(0,212,255,0.08);border-radius:10px;border:1px solid rgba(0,212,255,0.2);}
+    .admin-title{font-size:17px;font-weight:700;color:#00d4ff;letter-spacing:1px;text-shadow:0 0 10px rgba(0,212,255,0.6);}
+    .btn-sm-red{background:linear-gradient(135deg,#ff4757,#ff3838);border:none;border-radius:7px;padding:7px 13px;color:#fff;font-size:12px;cursor:pointer;font-weight:600;}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:13px;}
+    .stat-box{background:linear-gradient(135deg,rgba(0,212,255,0.12),rgba(0,212,255,0.05));border:1px solid rgba(0,212,255,0.2);border-radius:10px;padding:12px;text-align:center;}
+    .stat-n{font-size:24px;font-weight:700;color:#00d4ff;margin-bottom:4px;text-shadow:0 0 10px rgba(0,212,255,0.6);}
+    .stat-l{font-size:11px;color:#fff;letter-spacing:1px;}
+    .tab-row{display:flex;gap:6px;margin-bottom:13px;flex-wrap:wrap;}
+    .tab-btn{flex:1;min-width:80px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:9px 6px;color:#fff;font-size:11px;cursor:pointer;transition:all 0.25s;}
+    .tab-btn.active{background:rgba(0,212,255,0.2);border-color:#00d4ff;color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
+    .tab-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:11px;margin-bottom:9px;}
+    .tab-item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+    .tab-item-title{font-weight:600;font-size:13px;color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
+    .tab-item-sub{font-size:12px;color:#fff;margin-top:3px;}
+    .btn-sm{background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.3);border-radius:6px;padding:5px 9px;color:#00d4ff;font-size:11px;cursor:pointer;margin-left:6px;transition:all 0.2s;}
+    .btn-sm:hover{background:rgba(0,212,255,0.25);}
+    .btn-sm-danger{background:rgba(255,71,87,0.15);border:1px solid rgba(255,71,87,0.3);color:#ff4757;}
+    .btn-sm-danger:hover{background:rgba(255,71,87,0.25);}
+    .compartir-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:13px;margin-bottom:9px;}
+    .compartir-titulo{font-weight:600;color:#00d4ff;margin-bottom:8px;font-size:13px;text-shadow:0 0 8px rgba(0,212,255,0.6);}
+    .compartir-url{background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.1);border-radius:7px;padding:9px;font-size:12px;color:#1adb7a;word-break:break-all;margin-bottom:8px;}
+    .btn-copy{background:rgba(26,219,122,0.15);border:1px solid rgba(26,219,122,0.35);color:#1adb7a;padding:7px 11px;border-radius:6px;cursor:pointer;font-size:12px;width:100%;transition:all 0.2s;}
+    .btn-copy:hover{background:rgba(26,219,122,0.25);}
+    .footer{background:linear-gradient(180deg,transparent,rgba(0,0,0,0.5));padding:20px 15px;text-align:center;border-top:1px solid rgba(0,212,255,0.15);margin-top:20px;}
+    .footer-line1{font-size:13px;color:#00d4ff;letter-spacing:1px;margin-bottom:5px;text-shadow:0 0 10px rgba(0,212,255,0.6);}
+    .footer-line2{font-size:11px;color:#fff;letter-spacing:0.5px;margin-bottom:3px;}
+    .footer-line3{font-size:10px;color:#888;letter-spacing:0.5px;}
+    .footer-line4{font-size:9px;color:#666;letter-spacing:0.5px;margin-top:4px;}
+    .spotify-section{padding:13px;}
+    .spotify-btn{display:flex;align-items:center;gap:11px;background:linear-gradient(135deg,rgba(30,215,96,0.12),rgba(30,215,96,0.05));border:1px solid rgba(30,215,96,0.25);padding:11px 15px;border-radius:13px;cursor:pointer;transition:all 0.3s;width:100%;justify-content:center;box-sizing:border-box;}
+    .spotify-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(30,215,96,0.25);border-color:rgba(30,215,96,0.45);}
+    .spotify-btn span{font-size:13px;color:#e8d5a3;letter-spacing:1px;}
+    .admin-gal-item{position:relative;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;margin-bottom:8px;}
+    .admin-gal-img{width:100%;height:120px;object-fit:cover;display:block;}
+    .admin-gal-delete{position:absolute;top:5px;right:5px;background:rgba(255,71,87,0.9);border:none;border-radius:50%;width:28px;height:28px;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+    .admin-gal-delete:hover{background:#ff4757;transform:scale(1.1);}
+    .encomienda-section{background:rgba(0,0,0,0.2);border-radius:9px;padding:12px;margin-bottom:10px;}
+    .encomienda-title{color:#00d4ff;font-weight:700;margin-bottom:8px;font-size:14px;}
+    .viaje-option{background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(0,212,255,0.05));border:2px solid rgba(0,212,255,0.3);border-radius:12px;padding:15px;margin-bottom:12px;cursor:pointer;transition:all 0.3s;text-align:center;}
+    .viaje-option:hover{transform:translateY(-3px);border-color:#00d4ff;box-shadow:0 8px 20px rgba(0,212,255,0.3);}
+    .viaje-option.disabled{opacity:0.4;cursor:not-allowed;pointer-events:none;}
+    .viaje-option-title{font-size:15px;font-weight:700;color:#00d4ff;margin-bottom:6px;text-shadow:0 0 10px rgba(0,212,255,0.6);}
+    .viaje-option-time{font-size:13px;color:#fff;margin-bottom:8px;}
+    .viaje-option-cupos{font-size:12px;color:#1adb7a;font-weight:600;}
+    .cupos-badge{display:inline-block;background:rgba(26,219,122,0.2);border:1px solid rgba(26,219,122,0.4);border-radius:20px;padding:4px 12px;font-size:11px;color:#1adb7a;font-weight:600;margin-top:6px;}
+    .cupos-badge.low{background:rgba(255,165,0,0.2);border-color:rgba(255,165,0,0.4);color:#ffa500;}
+    .cupos-badge.full{background:rgba(255,71,87,0.2);border-color:rgba(255,71,87,0.4);color:#ff4757;}
+    .security-notice{font-size:9px;color:#555;text-align:center;padding:8px;letter-spacing:0.5px;}
+  </style>
+</head>
+<body>
+  <div class="img-overlay" id="imgModal" style="display:none" onclick="closeImgModal()">
+    <img id="imgModalSrc" src="" alt="foto"/>
+  </div>
+  <div class="modal-overlay" id="passModal" style="display:none">
+    <div class="modal-box">
+      <div class="modal-title" data-i18n="adminPanel">Panel Administrador</div>
+      <div class="modal-sub" data-i18n="exclusiveAccess">Acceso exclusivo</div>
+      <label class="lbl" data-i18n="password">Contraseña</label>
+      <input class="inp" type="password" id="passInput" placeholder="••••••••" style="margin-bottom:6px" onkeydown="if(event.key==='Enter')doLogin()" maxlength="20" autocomplete="off"/>
+      <div id="passError" style="color:#ff5555;font-size:12px;margin-bottom:9px;display:none" data-i18n="wrongPass">Contraseña incorrecta</div>
+      <div id="passLockout" style="color:#ffa500;font-size:12px;margin-bottom:9px;display:none">⚠️ Demasiados intentos. Espera <span id="lockoutTimer">30</span>s</div>
+      <div style="height:11px"></div>
+      <button class="btn-gold" id="loginBtn" onclick="doLogin()" data-i18n="enterPanel">Entrar al Panel</button>
+      <button class="modal-cancel" onclick="closePassModal()" data-i18n="cancel">Cancelar</button>
+    </div>
+  </div>
+  <div id="appHome">
+    <div class="header">
+      <div class="logo-rule">
+        <div class="logo-rule-line" style="width:56px"></div>
+        <div class="logo-rule-dot"></div>
+        <div class="logo-rule-line" style="width:56px"></div>
+      </div>
+      <div class="logo-name">TRANSPORTE EJECUTIVO</div>
+      <div class="logo-diamond-rule">
+        <div class="logo-diamond-line"></div>
+        <div class="logo-diamond"></div>
+        <div class="logo-diamond-line"></div>
+      </div>
+      <div class="logo-rides">SONSÓN</div>
+      <div class="logo-bottom-rule">
+        <div class="logo-bottom-line" style="background:linear-gradient(to right,transparent,#fff)"></div>
+        <div class="logo-tp" id="tpText" onclick="tpTap()">SERVICIO PRIVADO</div>
+        <div class="logo-bottom-line" style="background:linear-gradient(to left,transparent,#fff)"></div>
+      </div>
+      <div class="lang-selector">
+        <button class="lang-btn active" onclick="setLanguage('es', event)">Español</button>
+        <button class="lang-btn" onclick="setLanguage('en', event)">English</button>
+      </div>
+    </div>
+    <div class="quick-row">
+      <button class="quick-btn" id="btnGal" onclick="toggleSection('gal')">
+        <div class="quick-btn-left">
+          <span class="icon">📸</span>
+          <span class="label" data-i18n="gallery">Galería</span>
+        </div>
+        <span class="quick-chev" id="chevGal">▼</span>
+      </button>
+      <button class="quick-btn" id="btnRese" onclick="toggleSection('rese')">
+        <div class="quick-btn-left">
+          <span class="icon">⭐</span>
+          <span class="label" data-i18n="reviews">Reseñas</span>
+        </div>
+        <span class="quick-chev" id="chevRese">▼</span>
+      </button>
+    </div>
+    <div class="card" id="cardRes">
+      <div class="card-header" onclick="toggleCard('res')">
+        <span class="card-icon">📅</span>
+        <div style="flex:1">
+          <div class="card-title" data-i18n="newBooking">Nueva Reserva</div>
+          <div class="card-sub" data-i18n="scheduleTrip">Agenda tu viaje</div>
+        </div>
+        <span class="card-chev" id="chevRes">▼</span>
+      </div>
+      <div class="card-body" id="bodyRes">
+        <div class="ok" id="reservaOk" style="display:none" data-i18n="bookingSent">✅ ¡Reserva enviada! Te contactaremos pronto.</div>
+        <div id="viajeOptions">
+          <div class="viaje-option" id="opt-sm" onclick="selectViaje('sonson-medellin')">
+            <div class="viaje-option-title">🚌 Sonsón → Medellín</div>
+            <div class="viaje-option-time">Salida: 5:00 AM</div>
+            <div class="cupos-badge" id="cupos-sm">4 cupos disponibles</div>
+          </div>
+          <div class="viaje-option" id="opt-ms" onclick="selectViaje('medellin-sonson')">
+            <div class="viaje-option-title">🚌 Medellín → Sonsón</div>
+            <div class="viaje-option-time">Salida: 2:00 PM</div>
+            <div class="cupos-badge" id="cupos-ms">4 cupos disponibles</div>
+          </div>
+        </div>
+        <div id="reservaForm" style="display:none">
+          <button class="btn-gold-sm" onclick="backToOptions()" style="margin-bottom:13px">← Volver</button>
+          <label class="lbl" data-i18n="name">Nombre completo</label>
+          <input class="inp" id="fNombre" placeholder="" maxlength="100"/>
+          <div style="height:11px"></div>
+          <label class="lbl" data-i18n="phone">Teléfono</label>
+          <input class="inp" id="fNumero" placeholder="" maxlength="15" pattern="[0-9+\s-]{10,15}" inputmode="tel"/>
+          <div style="height:11px"></div>
+          <label class="lbl" data-i18n="date">Fecha</label>
+          <input class="inp" type="date" id="fFecha"/>
+          <div style="height:11px"></div>
+          <label class="lbl">Número de cupos (1-4)</label>
+          <select class="inp" id="fCupos">
+            <option value="1">1 cupo</option>
+            <option value="2">2 cupos</option>
+            <option value="3">3 cupos</option>
+            <option value="4">4 cupos</option>
+          </select>
+          <div style="height:11px"></div>
+          <button class="btn-gold" id="btnConfirmReserva" onclick="confirmarReserva()" data-i18n="confirmBooking">Confirmar Reserva por WhatsApp</button>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="cardEncomiendas">
+      <div class="card-header" onclick="toggleCard('encomiendas')">
+        <span class="card-icon">📦</span>
+        <div style="flex:1">
+          <div class="card-title" data-i18n="parcels">Encomiendas</div>
+          <div class="card-sub" data-i18n="sendReceive">Envía y recibe paquetes</div>
+        </div>
+        <span class="card-chev" id="chevEncomiendas">▼</span>
+      </div>
+      <div class="card-body" id="bodyEncomiendas">
+        <div class="ok" id="encomiendaOk" style="display:none" data-i18n="parcelSent">✅ ¡Encomienda enviada! Te contactaremos pronto.</div>
+        <div id="encomiendaOptions">
+          <div class="viaje-option" onclick="selectEncomienda('sonson-medellin')">
+            <div class="viaje-option-title">📦 Sonsón → Medellín</div>
+          </div>
+          <div class="viaje-option" onclick="selectEncomienda('medellin-sonson')">
+            <div class="viaje-option-title">📦 Medellín → Sonsón</div>
+          </div>
+        </div>
+        <div id="encomiendaForm" style="display:none">
+          <button class="btn-gold-sm" onclick="backToEncomiendaOptions()" style="margin-bottom:13px">← Volver</button>
+          
+          <div class="encomienda-section">
+            <div class="encomienda-title" data-i18n="pickupInfo">📍 Quién Envía</div>
+            <label class="lbl">Nombre</label>
+            <input class="inp" id="eRemitente" placeholder="" maxlength="100"/>
+            <div style="height:11px"></div>
+            <label class="lbl">Teléfono</label>
+            <input class="inp" id="eTelRemitente" placeholder="" maxlength="15" inputmode="tel"/>
+            <div style="height:11px"></div>
+            <label class="lbl">Dirección</label>
+            <input class="inp" id="eDirRemitente" placeholder="" maxlength="150"/>
+          </div>
+
+          <div class="encomienda-section">
+            <div class="encomienda-title" data-i18n="deliveryInfo">🏁 Quién Recibe</div>
+            <label class="lbl">Nombre</label>
+            <input class="inp" id="eDestinatario" placeholder="" maxlength="100"/>
+            <div style="height:11px"></div>
+            <label class="lbl">Teléfono</label>
+            <input class="inp" id="eTelDestinatario" placeholder="" maxlength="15" inputmode="tel"/>
+            <div style="height:11px"></div>
+            <label class="lbl">Dirección</label>
+            <input class="inp" id="eDirDestinatario" placeholder="" maxlength="150"/>
+          </div>
+
+          <div style="height:11px"></div>
+          <label class="lbl" data-i18n="parcelDescription">Descripción del paquete</label>
+          <input class="inp" id="eDescripcion" placeholder="" maxlength="200"/>
+          <div style="height:11px"></div>
+          <button class="btn-gold" id="btnConfirmEnc" onclick="confirmarEncomienda()" data-i18n="confirmParcel">Confirmar Encomienda por WhatsApp</button>
+        </div>
+      </div>
+    </div>
+    <div class="spotify-section">
+      <button class="spotify-btn" onclick="window.open('https://linktr.ee/omardejmejia','_blank')" rel="noopener noreferrer">
+        <span style="font-size:24px">🎵</span>
+        <span data-i18n="spotifyText">Aquí tu playlist de viaje</span>
+      </button>
+    </div>
+  </div>
+  <div id="appAdmin" style="display:none">
+    <div class="admin-wrap">
+      <div class="admin-top">
+        <div class="admin-title">Panel Admin</div>
+        <button class="btn-sm-red" onclick="salirAdmin()">Salir</button>
+      </div>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-n" id="statRes">0</div>
+          <div class="stat-l">Reservas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-n" id="statEnc">0</div>
+          <div class="stat-l">Encomiendas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-n" id="statRev">0</div>
+          <div class="stat-l">Reseñas</div>
+        </div>
+      </div>
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="setTab('reservas', this)">Reservas</button>
+        <button class="tab-btn" onclick="setTab('encomiendas', this)">Encomiendas</button>
+        <button class="tab-btn" onclick="setTab('reseñas', this)">Reseñas</button>
+        <button class="tab-btn" onclick="setTab('galeria', this)">Galería</button>
+        <button class="tab-btn" onclick="setTab('compartir', this)">Compartir</button>
+      </div>
+      <div id="tabContent"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-line1">TRANSPORTE EJECUTIVO</div>
+    <div class="footer-line2">SONSÓN</div>
+    <div class="footer-line3">( Desing-OMARDEJMEJIA 2026 )</div>
+    <div class="footer-line4">( todos los derechos reservados )</div>
+  </div>
+  <script>
+    /* =========================================================
+       SEGURIDAD: Configuración y utilidades
+       ========================================================= */
+    const WA = "573008150549";
+    const PASS_HASH = "a665a45920422f9d417e4867efdc4fb8a04a1f3db174fe9c98a5b9b05e22d8e3"; // SHA-256 de "1975"
+    const PASS = "1975"; // fallback
+    const MAX_CUPOS = 4;
+    const MAX_LOGIN_ATTEMPTS = 3;
+    const LOCKOUT_SECONDS = 30;
+    const ADMIN_TIMEOUT_MS = 5 * 60 * 1000; // 5 min
+    const RATE_LIMIT_MS = 10000; // 10 seg entre envíos
+    const MAX_INPUT_LEN = 200;
+
+    let lastSendTime = 0;
+    let loginAttempts = 0;
+    let lockoutUntil = 0;
+    let lockoutInterval = null;
+    let adminInactivityTimer = null;
+
+    // Framebusting
+    if (window.top !== window.self) {
+      try { window.top.location = window.self.location; } catch(e) { window.location = 'about:blank'; }
+    }
+
+    // Sanitización de texto
+    function sanitize(str, maxLen = MAX_INPUT_LEN) {
+      if (typeof str !== 'string') return '';
+      return str.replace(/[<>"'`]/g, '').trim().substring(0, maxLen);
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = String(text);
+      return div.innerHTML;
+    }
+
+    // Hash SHA-256
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Validación de URL segura
+    function isValidUrl(str) {
+      try {
+        const u = new URL(str);
+        return u.protocol === 'http:' || u.protocol === 'https:';
+      } catch { return false; }
+    }
+
+    // Validación de teléfono
+    function isValidPhone(p) {
+      return /^[0-9+\s\-]{7,20}$/.test(p);
+    }
+
+    // Validación de fecha
+    function isValidDate(d) {
+      return /^\d{4}-\d{2}-\d{2}$/.test(d) && !isNaN(new Date(d).getTime());
+    }
+
+    // Rate limiting
+    function canSend() {
+      const now = Date.now();
+      if (now - lastSendTime < RATE_LIMIT_MS) {
+        const wait = Math.ceil((RATE_LIMIT_MS - (now - lastSendTime)) / 1000);
+        alert(`⏳ Espera ${wait} segundos antes de enviar otro mensaje.`);
+        return false;
+      }
+      lastSendTime = now;
+      return true;
+    }
+
+    /* =========================================================
+       DATOS Y PERSISTENCIA
+       ========================================================= */
+    const GALERIA_URLS = [
+      "https://images.unsplash.com/photo-1583531352515-8884af319dc1?w=400",
+      "https://images.unsplash.com/photo-1599583649868-7f38e17675a3?w=400",
+      "https://images.unsplash.com/photo-1587595439717-464db3a5cce6?w=400",
+      "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=400",
+      "https://images.unsplash.com/photo-1596436889106-be35e843f974?w=400",
+      "https://images.unsplash.com/photo-1570789218527-54e9084af7aa?w=400",
+      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400",
+      "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400",
+      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400"
+    ];
+    const RESEÑAS_BASE = [
+      { nombre: "Carlos M., México 🇲🇽", texto: "Excelente servicio! Muy puntual y profesional. El carro muy limpio y cómodo. 100% recomendado!" },
+      { nombre: "Sarah J., USA 🇺🇸", texto: "Amazing service! Very friendly and knowledgeable about the city. The car was spotless. Best transport service we've used!" },
+      { nombre: "James T., England 🇬🇧", texto: "Brilliant service from start to finish. Very professional, safe driver, and great conversation. Highly recommend!" },
+      { nombre: "Ana P., Colombia 🇨🇴", texto: "Excelente servicio, muy puntual y amable. El carro muy cómodo, aire acondicionado funcionando genial. Lo recomiendo totalmente!" },
+      { nombre: "Michael R., USA 🇺🇸", texto: "The best! Always on time, clean car, helps with luggage, and gives great local tips. If you need reliable transport, this is it!" },
+      { nombre: "Laura G., México 🇲🇽", texto: "Increíble experiencia! Muy pendiente de nosotros, el carro en perfectas condiciones. Sin duda lo volveré a contratar. Totalmente recomendado!" }
+    ];
+
+    let reservas = [], encomiendas = [], reseñas = [...RESEÑAS_BASE];
+    let galeria = [...GALERIA_URLS];
+    let adminLogged = false, currentTab = "reservas";
+    let tpCount = 0, tpTimer = null;
+    let currentLang = 'es';
+    let selectedViaje = null;
+    let selectedEncomienda = null;
+
+    const translations = {
+      es: {
+        adminPanel: "Panel Administrador", exclusiveAccess: "Acceso exclusivo",
+        password: "Contraseña", wrongPass: "Contraseña incorrecta",
+        enterPanel: "Entrar al Panel", cancel: "Cancelar",
+        gallery: "Galería", reviews: "Reseñas",
+        newBooking: "Nueva Reserva", scheduleTrip: "Agenda tu viaje",
+        bookingSent: "✅ ¡Reserva enviada! Te contactaremos pronto.",
+        name: "Nombre completo", phone: "Teléfono", date: "Fecha",
+        confirmBooking: "Confirmar Reserva por WhatsApp",
+        parcels: "Encomiendas", sendReceive: "Envía y recibe paquetes",
+        parcelSent: "✅ ¡Encomienda enviada! Te contactaremos pronto.",
+        pickupInfo: "📍 Quién Envía", deliveryInfo: "🏁 Quién Recibe",
+        parcelDescription: "Descripción del paquete",
+        confirmParcel: "Confirmar Encomienda por WhatsApp",
+        spotifyText: "Aquí tu playlist de viaje"
+      },
+      en: {
+        adminPanel: "Admin Panel", exclusiveAccess: "Exclusive Access",
+        password: "Password", wrongPass: "Wrong password",
+        enterPanel: "Enter Panel", cancel: "Cancel",
+        gallery: "Gallery", reviews: "Reviews",
+        newBooking: "New Booking", scheduleTrip: "Schedule your trip",
+        bookingSent: "✅ Booking sent! We'll contact you soon.",
+        name: "Full name", phone: "Phone", date: "Date",
+        confirmBooking: "Confirm Booking via WhatsApp",
+        parcels: "Parcels", sendReceive: "Send and receive packages",
+        parcelSent: "✅ Parcel sent! We'll contact you soon.",
+        pickupInfo: "📍 Sender", deliveryInfo: "🏁 Receiver",
+        parcelDescription: "Package description",
+        confirmParcel: "Confirm Parcel via WhatsApp",
+        spotifyText: "Your travel playlist here"
+      }
+    };
+
+    /* =========================================================
+       CARGA / GUARDADO SEGURO
+       ========================================================= */
+    function load() {
+      try {
+        const r = localStorage.getItem("tes_rv");
+        if (r) {
+          const parsed = JSON.parse(r);
+          if (Array.isArray(parsed)) reservas = parsed.filter(x => x && typeof x === 'object');
+        }
+      } catch { reservas = []; }
+      try {
+        const e = localStorage.getItem("tes_enc");
+        if (e) {
+          const parsed = JSON.parse(e);
+          if (Array.isArray(parsed)) encomiendas = parsed.filter(x => x && typeof x === 'object');
+        }
+      } catch { encomiendas = []; }
+      try {
+        const re = localStorage.getItem("tes_re");
+        if (re) {
+          const parsed = JSON.parse(re);
+          if (Array.isArray(parsed)) reseñas = parsed.filter(x => x && typeof x === 'object');
+        }
+      } catch { reseñas = [...RESEÑAS_BASE]; }
+      try {
+        const g = localStorage.getItem("tes_gal");
+        if (g) {
+          const parsed = JSON.parse(g);
+          if (Array.isArray(parsed)) galeria = parsed.filter(u => typeof u === 'string' && isValidUrl(u));
+        }
+      } catch { galeria = [...GALERIA_URLS]; }
+    }
+
+    function save(k, d) {
+      try { localStorage.setItem(k, JSON.stringify(d)); } catch {}
+    }
+
+    /* =========================================================
+       Cálculo de cupos
+       ========================================================= */
+    function getCuposDisponibles(viaje, fecha) {
+      const reservasFecha = reservas.filter(r => r.viaje === viaje && r.fecha === fecha);
+      const cuposOcupados = reservasFecha.reduce((sum, r) => sum + parseInt(r.cupos || 0), 0);
+      return Math.max(0, MAX_CUPOS - cuposOcupados);
+    }
+
+    function updateCuposDisplay() {
+      const hoy = new Date().toISOString().split('T')[0];
+      const cuposSM = getCuposDisponibles('sonson-medellin', hoy);
+      const cuposMS = getCuposDisponibles('medellin-sonson', hoy);
+      
+      const badgeSM = document.getElementById('cupos-sm');
+      const badgeMS = document.getElementById('cupos-ms');
+      const optSM = document.getElementById('opt-sm');
+      const optMS = document.getElementById('opt-ms');
+      
+      if (badgeSM) {
+        badgeSM.textContent = cuposSM === 0 ? 'Sin cupos disponibles' : `${cuposSM} cupos disponibles`;
+        badgeSM.className = 'cupos-badge' + (cuposSM === 0 ? ' full' : cuposSM <= 2 ? ' low' : '');
+      }
+      if (badgeMS) {
+        badgeMS.textContent = cuposMS === 0 ? 'Sin cupos disponibles' : `${cuposMS} cupos disponibles`;
+        badgeMS.className = 'cupos-badge' + (cuposMS === 0 ? ' full' : cuposMS <= 2 ? ' low' : '');
+      }
+      if (optSM) optSM.classList.toggle('disabled', cuposSM === 0);
+      if (optMS) optMS.classList.toggle('disabled', cuposMS === 0);
+    }
+
+    /* =========================================================
+       INIT
+       ========================================================= */
+    window.onload = function () {
+      load();
+      renderGaleria();
+      renderReseñas();
+      updateCuposDisplay();
+      // Fecha mínima = hoy
+      const hoy = new Date().toISOString().split('T')[0];
+      const fFecha = document.getElementById('fFecha');
+      if (fFecha) fFecha.min = hoy;
+    };
+
+    /* =========================================================
+       SEGURIDAD: Login con anti-brute-force
+       ========================================================= */
+    function tpTap() {
+      tpCount++;
+      if (tpTimer) clearTimeout(tpTimer);
+      if (tpCount >= 3) { tpCount = 0; openPassModal(); }
+      else { tpTimer = setTimeout(() => tpCount = 0, 2500); }
+    }
+
+    function openPassModal() {
+      document.getElementById("passModal").style.display = "flex";
+      document.getElementById("passInput").value = "";
+      document.getElementById("passError").style.display = "none";
+      updateLockoutUI();
+      setTimeout(() => document.getElementById("passInput").focus(), 100);
+    }
+
+    function closePassModal() { 
+      document.getElementById("passModal").style.display = "none"; 
+    }
+
+    function updateLockoutUI() {
+      const now = Date.now();
+      const loginBtn = document.getElementById('loginBtn');
+      const passInput = document.getElementById('passInput');
+      const lockoutDiv = document.getElementById('passLockout');
+      
+      if (now < lockoutUntil) {
+        const remaining = Math.ceil((lockoutUntil - now) / 1000);
+        document.getElementById('lockoutTimer').textContent = remaining;
+        lockoutDiv.style.display = 'block';
+        loginBtn.disabled = true;
+        loginBtn.style.opacity = '0.5';
+        passInput.disabled = true;
+        if (lockoutInterval) clearInterval(lockoutInterval);
+        lockoutInterval = setInterval(() => {
+          const r = Math.ceil((lockoutUntil - Date.now()) / 1000);
+          if (r <= 0) {
+            clearInterval(lockoutInterval);
+            lockoutDiv.style.display = 'none';
+            loginBtn.disabled = false;
+            loginBtn.style.opacity = '1';
+            passInput.disabled = false;
+          } else {
+            document.getElementById('lockoutTimer').textContent = r;
+          }
+        }, 1000);
+      } else {
+        lockoutDiv.style.display = 'none';
+        loginBtn.disabled = false;
+        loginBtn.style.opacity = '1';
+        passInput.disabled = false;
+      }
+    }
+
+    async function doLogin() {
+      if (Date.now() < lockoutUntil) return;
+      
+      const input = document.getElementById("passInput").value;
+      // Verificación con hash
+      const hash = await sha256(input);
+      const valid = (hash === PASS_HASH) || (input === PASS);
+      
+      if (valid) {
+        loginAttempts = 0;
+        closePassModal();
+        adminLogged = true;
+        document.getElementById("appHome").style.display = "none";
+        document.getElementById("appAdmin").style.display = "block";
+        updateStats();
+        setTab("reservas", document.querySelector(".tab-btn"));
+        startAdminInactivityTimer();
+      } else {
+        loginAttempts++;
+        if (loginAttempts >= MAX_LOGIN_ATTEMPTS) {
+          lockoutUntil = Date.now() + (LOCKOUT_SECONDS * 1000);
+          loginAttempts = 0;
+          updateLockoutUI();
+        } else {
+          document.getElementById("passError").style.display = "block";
+          document.getElementById("passError").textContent = 
+            `Contraseña incorrecta (${MAX_LOGIN_ATTEMPTS - loginAttempts} intentos restantes)`;
+        }
+      }
+    }
+
+    function startAdminInactivityTimer() {
+      if (adminInactivityTimer) clearTimeout(adminInactivityTimer);
+      adminInactivityTimer = setTimeout(() => {
+        if (adminLogged) salirAdmin();
+      }, ADMIN_TIMEOUT_MS);
+    }
+
+    ['mousemove','keydown','click','touchstart'].forEach(evt => {
+      document.addEventListener(evt, () => {
+        if (adminLogged) startAdminInactivityTimer();
+      });
+    });
+
+    function salirAdmin() {
+      adminLogged = false;
+      if (adminInactivityTimer) clearTimeout(adminInactivityTimer);
+      document.getElementById("appAdmin").style.display = "none";
+      document.getElementById("appHome").style.display = "block";
+    }
+
+    /* =========================================================
+       PANEL ADMIN
+       ========================================================= */
+    function updateStats() {
+      document.getElementById("statRes").textContent = reservas.length;
+      document.getElementById("statEnc").textContent = encomiendas.length;
+      document.getElementById("statRev").textContent = reseñas.length;
+    }
+
+    function setTab(t, btn) {
+      currentTab = t;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      renderTabContent();
+    }
+
+    function renderTabContent() {
+      const c = document.getElementById("tabContent");
+      if (currentTab === "reservas") {
+        if (reservas.length === 0) {
+          c.innerHTML = '<div style="text-align:center;color:#666;padding:26px">No hay reservas aún</div>';
+          return;
+        }
+        c.innerHTML = reservas.map((r, i) => `
+          <div class="tab-item">
+            <div class="tab-item-header">
+              <div class="tab-item-title">${escapeHtml(r.nombre)}</div>
+              <div>
+                <button class="btn-sm btn-sm-danger" onclick="delRes(${i})">Eliminar</button>
+              </div>
+            </div>
+            <div class="tab-item-sub">${r.viaje === 'sonson-medellin' ? '🚌 Sonsón → Medellín' : '🚌 Medellín → Sonsón'}</div>
+            <div class="tab-item-sub">📅 ${escapeHtml(r.fecha)} · 👥 ${escapeHtml(String(r.cupos))} cupo(s)</div>
+            <div class="tab-item-sub">📞 ${escapeHtml(r.numero)}</div>
+          </div>
+        `).join("");
+      } else if (currentTab === "encomiendas") {
+        if (encomiendas.length === 0) {
+          c.innerHTML = '<div style="text-align:center;color:#666;padding:26px">No hay encomiendas aún</div>';
+          return;
+        }
+        c.innerHTML = encomiendas.map((e, i) => `
+          <div class="tab-item">
+            <div class="tab-item-header">
+              <div class="tab-item-title">📦 ${escapeHtml(e.descripcion)}</div>
+              <div>
+                <button class="btn-sm btn-sm-danger" onclick="delEnc(${i})">Eliminar</button>
+              </div>
+            </div>
+            <div class="tab-item-sub"><strong>Ruta:</strong> ${e.ruta === 'sonson-medellin' ? 'Sonsón → Medellín' : 'Medellín → Sonsón'}</div>
+            <div class="tab-item-sub"><strong>Envía:</strong> ${escapeHtml(e.remitente)} · 📞 ${escapeHtml(e.telRemitente)}</div>
+            <div class="tab-item-sub">📍 ${escapeHtml(e.dirRemitente)}</div>
+            <div class="tab-item-sub"><strong>Recibe:</strong> ${escapeHtml(e.destinatario)} · 📞 ${escapeHtml(e.telDestinatario)}</div>
+            <div class="tab-item-sub">📍 ${escapeHtml(e.dirDestinatario)}</div>
+          </div>
+        `).join("");
+      } else if (currentTab === "reseñas") {
+        if (reseñas.length === 0) {
+          c.innerHTML = '<div style="text-align:center;color:#666;padding:26px">No hay reseñas</div>';
+          return;
+        }
+        c.innerHTML = reseñas.map((r, i) => `
+          <div class="tab-item">
+            <div class="tab-item-header">
+              <div class="tab-item-title">${escapeHtml(r.nombre)}</div>
+              <div>
+                <button class="btn-sm" onclick="editReseña(${i})">Editar</button>
+                <button class="btn-sm btn-sm-danger" onclick="delReseña(${i})">Eliminar</button>
+              </div>
+            </div>
+            <div class="tab-item-sub">${escapeHtml(r.texto)}</div>
+          </div>
+        `).join("");
+      } else if (currentTab === "galeria") {
+        renderGaleriaTab();
+      } else if (currentTab === "compartir") {
+        const url = window.location.href;
+        c.innerHTML = `
+          <div class="compartir-box">
+            <div class="compartir-titulo">WhatsApp</div>
+            <div class="compartir-url">${escapeHtml(url)}</div>
+            <button class="btn-copy" onclick="copyLink('${escapeHtml(url)}')">Copiar Enlace</button>
+          </div>
+          <div class="compartir-box">
+            <div class="compartir-titulo">Compartir por WhatsApp</div>
+            <button class="btn-gold" onclick="shareWA()">Compartir</button>
+          </div>
+        `;
+      }
+    }
+
+    function renderGaleriaTab() {
+      const c = document.getElementById("tabContent");
+      c.innerHTML = `
+        <div class="compartir-box">
+          <div class="compartir-titulo">Agregar Imagen</div>
+          <input class="inp" id="newImgUrl" placeholder="URL de la imagen (https://...)" style="margin-bottom:8px" maxlength="500"/>
+          <button class="btn-gold" onclick="addImagen()">Agregar Imagen</button>
+        </div>
+        <div style="margin-top:15px">
+          <div class="compartir-titulo">Imágenes actuales (${galeria.length})</div>
+          ${galeria.map((g, i) => `
+            <div class="admin-gal-item">
+              <img src="${escapeHtml(g)}" class="admin-gal-img" onerror="this.src='https://via.placeholder.com/400x300?text=Error'"/>
+              <button class="admin-gal-delete" onclick="delImagen(${i})" title="Eliminar">✕</button>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function addImagen() {
+      const url = document.getElementById("newImgUrl").value.trim();
+      if (!url) { alert("Por favor ingresa una URL válida"); return; }
+      if (!isValidUrl(url)) { alert("URL no válida. Debe comenzar con http:// o https://"); return; }
+      galeria.push(url);
+      save("tes_gal", galeria);
+      document.getElementById("newImgUrl").value = "";
+      renderGaleria();
+      renderGaleriaTab();
+      alert("✅ Imagen agregada correctamente");
+    }
+
+    function delImagen(i) {
+      if (confirm("¿Eliminar esta imagen de la galería?")) {
+        galeria.splice(i, 1);
+        save("tes_gal", galeria);
+        renderGaleria();
+        renderGaleriaTab();
+      }
+    }
+
+    function editReseña(i) {
+      const newName = sanitize(prompt("Nuevo nombre:", reseñas[i].nombre) || '', 100);
+      if (!newName) return;
+      const newText = sanitize(prompt("Nuevo texto de la reseña:", reseñas[i].texto) || '', 500);
+      if (!newText) return;
+      reseñas[i].nombre = newName;
+      reseñas[i].texto = newText;
+      save("tes_re", reseñas);
+      renderReseñas();
+      renderTabContent();
+    }
+
+    function delRes(i) {
+      if (confirm("¿Eliminar esta reserva?")) {
+        reservas.splice(i, 1);
+        save("tes_rv", reservas);
+        updateStats();
+        updateCuposDisplay();
+        renderTabContent();
+      }
+    }
+
+    function delEnc(i) {
+      if (confirm("¿Eliminar esta encomienda?")) {
+        encomiendas.splice(i, 1);
+        save("tes_enc", encomiendas);
+        updateStats();
+        renderTabContent();
+      }
+    }
+
+    function delReseña(i) {
+      if (confirm("¿Eliminar esta reseña?")) {
+        reseñas.splice(i, 1);
+        save("tes_re", reseñas);
+        updateStats();
+        renderReseñas();
+        renderTabContent();
+      }
+    }
+
+    function copyLink(t) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(() => alert("¡Copiado!"));
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = t;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); alert("¡Copiado!"); } catch { alert("No se pudo copiar"); }
+        document.body.removeChild(ta);
+      }
+    }
+
+    function shareWA() {
+      const t = "Mira mis servicios de transporte privado en Sonsón";
+      const u = encodeURIComponent(window.location.href);
+      window.open(`https://wa.me/?text=${encodeURIComponent(t)}%20${u}`, '_blank', 'noopener,noreferrer');
+    }
+
+    /* =========================================================
+       UI: Cards y secciones
+       ========================================================= */
+    function toggleCard(t) {
+      const b = document.getElementById("body" + t.charAt(0).toUpperCase() + t.slice(1));
+      const c = document.getElementById("chev" + t.charAt(0).toUpperCase() + t.slice(1));
+      const isOpen = b.classList.contains("open");
+      document.querySelectorAll(".card-body").forEach(x => x.classList.remove("open"));
+      document.querySelectorAll(".card-chev").forEach(x => x.style.transform = "");
+      if (!isOpen) {
+        b.classList.add("open");
+        if (c) c.style.transform = "rotate(180deg)";
+      }
+    }
+
+    function toggleSection(s) {
+      // Galería y reseñas se muestran en el panel admin, no en home
+      // Esta función se mantiene por compatibilidad
+    }
+
+    /* =========================================================
+       RESERVAS
+       ========================================================= */
+    function selectViaje(viaje) {
+      selectedViaje = viaje;
+      document.getElementById('viajeOptions').style.display = 'none';
+      document.getElementById('reservaForm').style.display = 'block';
+    }
+
+    function backToOptions() {
+      document.getElementById('viajeOptions').style.display = 'block';
+      document.getElementById('reservaForm').style.display = 'none';
+      selectedViaje = null;
+    }
+
+    function confirmarReserva() {
+      if (!canSend()) return;
+      
+      const n = sanitize(document.getElementById("fNombre").value, 100);
+      const m = sanitize(document.getElementById("fNumero").value, 20);
+      const f = document.getElementById("fFecha").value;
+      const cupos = document.getElementById("fCupos").value;
+      
+      if (!n || !m || !f) { alert("Completa todos los campos"); return; }
+      if (!isValidPhone(m)) { alert("Teléfono no válido"); return; }
+      if (!isValidDate(f)) { alert("Fecha no válida"); return; }
+
+      const cuposDisponibles = getCuposDisponibles(selectedViaje, f);
+      if (parseInt(cupos) > cuposDisponibles) {
+        alert(`Solo quedan ${cuposDisponibles} cupos disponibles para esta fecha`);
+        return;
+      }
+
+      const horaSalida = selectedViaje === 'sonson-medellin' ? '5:00 AM' : '2:00 PM';
+      const rutaTexto = selectedViaje === 'sonson-medellin' ? 'Sonsón → Medellín' : 'Medellín → Sonsón';
+
+      reservas.push({
+        nombre: n, numero: m, viaje: selectedViaje, fecha: f, cupos: parseInt(cupos)
+      });
+      save("tes_rv", reservas);
+
+      const t = `\n🚖 *Nueva Reserva*\n\n👤 *Nombre:* ${n}\n📞 *Teléfono:* ${m}\n🚌 *Ruta:* ${rutaTexto}\n⏰ *Hora:* ${horaSalida}\n📅 *Fecha:* ${f}\n👥 *Cupos:* ${cupos}`;
+      
+      window.open(`https://wa.me/${WA}?text=${encodeURIComponent(t)}`, "_blank", 'noopener,noreferrer');
+      document.getElementById("reservaOk").style.display = "block";
+      ["fNombre", "fNumero", "fFecha"].forEach(i => document.getElementById(i).value = "");
+      document.getElementById("fCupos").value = "1";
+      setTimeout(() => {
+        document.getElementById("reservaOk").style.display = "none";
+        backToOptions();
+        updateCuposDisplay();
+      }, 3000);
+    }
+
+    /* =========================================================
+       ENCOMIENDAS
+       ========================================================= */
+    function selectEncomienda(ruta) {
+      selectedEncomienda = ruta;
+      document.getElementById('encomiendaOptions').style.display = 'none';
+      document.getElementById('encomiendaForm').style.display = 'block';
+    }
+
+    function backToEncomiendaOptions() {
+      document.getElementById('encomiendaOptions').style.display = 'block';
+      document.getElementById('encomiendaForm').style.display = 'none';
+      selectedEncomienda = null;
+    }
+
+    function confirmarEncomienda() {
+      if (!canSend()) return;
+      
+      const remitente = sanitize(document.getElementById("eRemitente").value, 100);
+      const telRemitente = sanitize(document.getElementById("eTelRemitente").value, 20);
+      const dirRemitente = sanitize(document.getElementById("eDirRemitente").value, 150);
+      const destinatario = sanitize(document.getElementById("eDestinatario").value, 100);
+      const telDestinatario = sanitize(document.getElementById("eTelDestinatario").value, 20);
+      const dirDestinatario = sanitize(document.getElementById("eDirDestinatario").value, 150);
+      const descripcion = sanitize(document.getElementById("eDescripcion").value, 200);
+      
+      if (!remitente || !telRemitente || !dirRemitente || !destinatario || !telDestinatario || !dirDestinatario || !descripcion) {
+        alert("Completa todos los campos"); return;
+      }
+      if (!isValidPhone(telRemitente) || !isValidPhone(telDestinatario)) {
+        alert("Teléfonos no válidos"); return;
+      }
+
+      const rutaTexto = selectedEncomienda === 'sonson-medellin' ? 'Sonsón → Medellín' : 'Medellín → Sonsón';
+      
+      encomiendas.push({
+        ruta: selectedEncomienda, remitente, telRemitente, dirRemitente,
+        destinatario, telDestinatario, dirDestinatario, descripcion
+      });
+      save("tes_enc", encomiendas);
+      
+      const t = `\n📦 *Nueva Encomienda*\n\n🚌 *Ruta:* ${rutaTexto}\n\n📍 *Quién Envía:*\n👤 ${remitente}\n📞 ${telRemitente}\n🏠 ${dirRemitente}\n\n🏁 *Quién Recibe:*\n👤 ${destinatario}\n📞 ${telDestinatario}\n🏠 ${dirDestinatario}\n\n📝 *Descripción:* ${descripcion}`;
+      
+      window.open(`https://wa.me/${WA}?text=${encodeURIComponent(t)}`, "_blank", 'noopener,noreferrer');
+      document.getElementById("encomiendaOk").style.display = "block";
+      ["eRemitente","eTelRemitente","eDirRemitente","eDestinatario","eTelDestinatario","eDirDestinatario","eDescripcion"]
+        .forEach(i => document.getElementById(i).value = "");
+      setTimeout(() => {
+        document.getElementById("encomiendaOk").style.display = "none";
+        backToEncomiendaOptions();
+      }, 3000);
+    }
+
+    /* =========================================================
+       GALERÍA Y RESEÑAS (público)
+       ========================================================= */
+    function renderGaleria() {
+      // La galería pública se renderiza desde el admin tab
+    }
+
+    function renderReseñas() {
+      // Las reseñas públicas se renderizan desde el admin tab
+    }
+
+    function openImgModal(s) {
+      if (!isValidUrl(s)) return;
+      document.getElementById("imgModalSrc").src = s;
+      document.getElementById("imgModal").style.display = "flex";
+    }
+
+    function closeImgModal() {
+      document.getElementById("imgModal").style.display = "none";
+      document.getElementById("imgModalSrc").src = "";
+    }
+
+    function setLanguage(lang, ev) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      if (ev && ev.target) ev.target.classList.add('active');
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const t = document.getElementById("tpText");
+      if (t) t.addEventListener("dblclick", openPassModal);
+    });
+  </script>
+</body>
+</html>
+
